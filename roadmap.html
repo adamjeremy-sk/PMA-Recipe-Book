@@ -6,7 +6,7 @@
     <title>Roadmap - PMA RecipeBook</title>
     <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Tangerine" rel="stylesheet">
     <style>
-        /* --- EMBEDDED CSS (Modular Cellular Grid Layout) --- */
+        /* --- EMBEDDED CSS (Responsive Cellular Grid) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { height: 100%; }
         body { 
@@ -53,24 +53,25 @@
             width: 25px;
         }
         
-        /* Grid Layout System */
+        /* Responsive Grid Layout System */
         #main {
-            width: 960px;
+            max-width: 960px; /* Max width for desktop */
+            width: 95%; /* Responsive width for mobile */
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 250px;
             gap: 24px;
-            position: relative; /* Anchor for absolute positioning */
+            position: relative;
         }
         
         /* Universal Cell Styling */
         .cell {
             background: #FDF5E6;
             border: 2px solid #000;
-            border-radius: 0; /* Sharp edges */
+            border-radius: 0;
             padding: 24px;
             color: #2A1610;
-            position: relative; /* Context for absolute children if needed */
+            position: relative;
         }
         
         /* Grid Span Helpers */
@@ -85,26 +86,9 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 5px solid #D35400;
-            overflow: visible; /* Allow logo to overlap */
-        }
-        
-        /* Floating Logo Implementation */
-        .floating-logo {
-            position: absolute;
-            top: -40px;
-            left: -20px;
-            width: 240px; /* Approx twice the size of previous constraints */
-            transform: rotate(-30deg);
-            z-index: 50;
-            pointer-events: none; /* Allow clicking through the logo to the header if necessary */
         }
         
         /* Header Text Anchor */
-        .header-text-anchor {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
         .header-text-anchor h1 {
             font: normal 350% 'Yanone Kaffeesatz', arial, sans-serif; 
             margin: 0; 
@@ -124,6 +108,8 @@
             list-style-type: none; 
             display: flex; 
             gap: 5px; 
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            justify-content: flex-end;
         }
         ul#menu li { float: none; padding: 0; margin: 0; position: static; }
         ul#menu li a { 
@@ -139,7 +125,7 @@
             color: #FFF; 
         }
         ul#menu li a:hover { color: #F39C12; }
-        ul#menu li:before { content: none; } /* Remove bullet override */
+        ul#menu li:before { content: none; }
         
         /* Content Cell */
         .content-cell h1 { 
@@ -161,7 +147,7 @@
         /* Sidebar Stack */
         .sidebar-stack {
             grid-column: 2;
-            grid-row: 2 / span 6; /* Spans across intro + 4 phases */
+            grid-row: 2 / span 6;
             display: flex;
             flex-direction: column;
             gap: 24px;
@@ -182,6 +168,14 @@
         }
         .sidebar-cell p { color: #3E2723; margin: 0; }
         
+        /* Logo in Sidebar */
+        .sidebar-logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 24px auto 0 auto; /* Centered with spacing above */
+        }
+        
         /* Footer Cell */
         .footer-cell {
             background: #3E2723;
@@ -193,13 +187,29 @@
         .footer-cell p { margin: 0; padding: 0; }
         .footer-cell a { color: #F39C12; }
         .footer-cell a:hover { color: #FFF; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            #main {
+                grid-template-columns: 1fr; /* Stack layout on mobile */
+            }
+            .sidebar-stack {
+                grid-column: 1;
+                grid-row: auto;
+            }
+            .header-cell {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            ul#menu {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
 <div id="main">
-    <!-- Floating Logo (Decoupled from Grid Flow) -->
-    <img src="logo.png" alt="Puppet Monkey Apps" class="floating-logo">
-
     <!-- Header Cell -->
     <header class="cell header-cell span-full">
         <div class="header-text-anchor">
@@ -236,6 +246,10 @@
             <h1>Active</h1>
             <p>Core UI and Domain Models are established. Flavor vector mapping in progress.</p>
         </div>
+        <!-- Logo Moved Here -->
+        <a href="index.html">
+            <img src="logo.png" alt="Puppet Monkey Apps Logo" class="sidebar-logo">
+        </a>
     </aside>
     
     <!-- Phase 1 Cell -->
