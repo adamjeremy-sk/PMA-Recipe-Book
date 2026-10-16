@@ -5,6 +5,7 @@ pluginManagement {
                 includeGroupByRegex("com\\.android.*")
                 includeGroupByRegex("com\\.google.*")
                 includeGroupByRegex("androidx.*")
+
             }
         }
         mavenCentral()
@@ -24,3 +25,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "PMA-Recipe-Book"
 include(":app")
+include(":theme-engine")

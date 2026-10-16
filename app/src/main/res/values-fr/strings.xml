@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PMA Carnet de Recettes</string>
+    <string name="greeting">Bonjour %1$s !</string>
+</resources>
