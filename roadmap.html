@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roadmap - PMA RecipeBook</title>
-    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Tangerine" rel="stylesheet">
     <style>
-        /* --- EMBEDDED CSS (Responsive Cellular Grid) --- */
+        /* --- EMBEDDED CSS (Responsive Cellular Grid - Tahoma Font) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { height: 100%; }
         body { 
-            font: normal .80em 'trebuchet ms', arial, sans-serif; 
+            font: normal .80em Tahoma, Geneva, sans-serif; 
             background: #2A1610;
             background-image: linear-gradient(rgba(0,0,0,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.15) 1px, transparent 1px);
             background-size: 24px 24px;
@@ -22,15 +21,15 @@
         
         /* Typography */
         h1, h2, h3, h4, h5, h6 { 
-            font: normal 250% 'Yanone Kaffeesatz', arial, sans-serif; 
+            font: normal 250% Tahoma, Geneva, sans-serif; 
             color: #D35400;
             margin: 0 0 12px 0; 
             padding: 0; 
         }
-        h2 { font: normal 170% 'Yanone Kaffeesatz', arial, sans-serif; color: #D35400; margin: 0; padding: 0 0 6px 0; }
+        h2 { font: normal 170% Tahoma, Geneva, sans-serif; color: #D35400; margin: 0; padding: 0 0 6px 0; }
         h3 { font-size: 200%; margin: 0 0 8px 0; color: #D35400; }
-        h4, h5, h6 { margin: 0; padding: 0 0 5px 0; font: normal 100% arial, sans-serif; color: #D35400; line-height: 1em; }
-        h5, h6 { font: italic 95% arial, sans-serif; color: #A04000; padding-bottom: 10px; }
+        h4, h5, h6 { margin: 0; padding: 0 0 5px 0; font: normal 100% Tahoma, Geneva, sans-serif; color: #D35400; line-height: 1em; }
+        h5, h6 { font: italic 95% Tahoma, Geneva, sans-serif; color: #A04000; padding-bottom: 10px; }
         h6 { color: #D35400; }
         
         a, a:hover { outline: none; text-decoration: none; color: #E67E22; }
@@ -55,8 +54,8 @@
         
         /* Responsive Grid Layout System */
         #main {
-            max-width: 960px; /* Max width for desktop */
-            width: 95%; /* Responsive width for mobile */
+            max-width: 960px; 
+            width: 95%; 
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 250px;
@@ -77,55 +76,64 @@
         /* Grid Span Helpers */
         .span-full { grid-column: 1 / -1; }
         
-        /* Header Cell */
+        /* Header Cell - RESTRUCTURED */
         .header-cell {
             background: #3E2723;
             color: #FDF5E6;
-            padding: 20px 24px;
+            padding: 20px 24px 0 24px; /* Remove bottom padding */
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: center;
             border-bottom: 5px solid #D35400;
         }
         
-        /* Header Text Anchor */
-        .header-text-anchor h1 {
-            font: normal 350% 'Yanone Kaffeesatz', arial, sans-serif; 
+        /* Header Title */
+        .header-title {
+            margin-bottom: 15px;
+        }
+        .header-title h1 {
+            font: normal 280% Tahoma, Geneva, sans-serif; 
             margin: 0; 
-            color: #FDF5E6; 
+            color: #D35400; /* Orange-Brown */
             white-space: nowrap;
         }
-        .header-text-anchor a { 
-            color: #F39C12; 
+        .header-title a { 
+            color: #D35400; 
             text-decoration: none; 
         }
-        .header-text-anchor a:hover { 
-            color: #FFF; 
+        .header-title a:hover { 
+            color: #F39C12; 
         }
         
-        /* Navigation */
-        ul#menu { 
-            list-style-type: none; 
-            display: flex; 
-            gap: 5px; 
-            flex-wrap: wrap; /* Allow wrapping on small screens */
-            justify-content: flex-end;
+        /* Navigation - Single Line Spanning Whole Header */
+        .header-nav-bar {
+            display: flex;
+            justify-content: space-between; /* Distributes links across full width */
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 10px; /* Space above the orange border */
+            width: 100%;
+            flex-wrap: wrap;
         }
-        ul#menu li { float: none; padding: 0; margin: 0; position: static; }
-        ul#menu li a { 
-            font: normal 160% 'Yanone Kaffeesatz', sans-serif; 
-            color: #FDF5E6; 
-            padding: 8px 16px; 
-            display: block; 
+        .header-nav-bar a {
+            font: normal 100% Tahoma, Geneva, sans-serif;
+            color: #FDF5E6;
+            text-decoration: none;
+            padding: 6px 12px;
             border: 1px solid transparent;
+            white-space: nowrap;
         }
-        ul#menu li.current a { 
-            background: #D35400; 
-            border: 2px solid #000; 
-            color: #FFF; 
+        .header-nav-bar a:hover {
+            color: #F39C12;
         }
-        ul#menu li a:hover { color: #F39C12; }
-        ul#menu li:before { content: none; }
+        
+        /* Active State for Roadmap */
+        .header-nav-bar a.active {
+            background: #D35400;
+            border: 2px solid #000;
+            color: #FFF;
+            font-weight: bold;
+        }
         
         /* Content Cell */
         .content-cell h1 { 
@@ -173,7 +181,7 @@
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 24px auto 0 auto; /* Centered with spacing above */
+            margin: 24px auto 0 auto; 
         }
         
         /* Footer Cell */
@@ -191,19 +199,22 @@
         /* Mobile Adjustments */
         @media (max-width: 768px) {
             #main {
-                grid-template-columns: 1fr; /* Stack layout on mobile */
+                grid-template-columns: 1fr; 
             }
             .sidebar-stack {
                 grid-column: 1;
                 grid-row: auto;
             }
             .header-cell {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+                padding: 20px 24px 0 24px;
             }
-            ul#menu {
-                justify-content: center;
+            .header-title {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .header-nav-bar {
+                justify-content: center; /* Center links on mobile */
+                gap: 10px;
             }
         }
     </style>
@@ -212,19 +223,17 @@
 <div id="main">
     <!-- Header Cell -->
     <header class="cell header-cell span-full">
-        <div class="header-text-anchor">
+        <div class="header-title">
             <h1><a href="index.html">PMA Recipe Book</a></h1>
         </div>
-        <nav>
-            <ul id="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="license.html">License</a></li>
-                <li><a href="usermanual.html">User Manual</a></li>
-                <li class="current"><a href="roadmap.html">Roadmap</a></li>
-                <li><a href="changelog.html">Changelog</a></li>
-                <li><a href="support-contact.html">Contact</a></li>
-            </ul>
+        <nav class="header-nav-bar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="license.html">License</a>
+            <a href="usermanual.html">User Manual</a>
+            <a href="roadmap.html" class="active">Roadmap</a>
+            <a href="changelog.html">Changelog</a>
+            <a href="support-contact.html">Contact</a>
         </nav>
     </header>
     
@@ -246,7 +255,7 @@
             <h1>Active</h1>
             <p>Core UI and Domain Models are established. Flavor vector mapping in progress.</p>
         </div>
-        <!-- Logo Moved Here -->
+        <!-- Logo -->
         <a href="index.html">
             <img src="logo.png" alt="Puppet Monkey Apps Logo" class="sidebar-logo">
         </a>
