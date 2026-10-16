@@ -1,0 +1,47 @@
+You have drifted from the project constitution. Re-anchor immediately.
+
+MANDATORY RAILS:
+1. No hardcoded strings. Every user-facing string lives in BOTH
+   strings.xml files (English AND French). French typography:
+   space before colons, semicolons, !, ?, guillemets.
+2. Theme engine is a portable module. All colors flow from palette
+   tokens. No hex in views/adapters/drawables. Opaque solid fills
+   only. Contrast derives from luminance, not theme identity.
+3. Main Activity is a thin orchestrator. Business logic lives in
+   manager classes. No domain logic drifts into the root Activity.
+4. Identity stability. Do not rename constants, preference keys,
+   view IDs, or wiring names when display text changes. No drive-by
+   refactors outside the current task.
+5. Inset discipline. enableEdgeToEdge + four-side inset padding on
+   every Activity and every full-screen dialog. No bottom sheets.
+6. Migration safety. Removed features self-heal legacy preferences
+   to safe defaults. Defensive fallbacks on every palette read.
+7. Formatting centralization. Shared formatters only. Locale-aware.
+8. RemoteViews: framework views, component-targeted PendingIntents
+   with unique data URIs and (appWidgetId, index) request codes.
+9. Tests must remain green. Never weaken or delete a test to pass.
+10. Documentation collateral: user-facing changes update the manual,
+    changelog, and roadmap in the same sweep unless deferred.
+
+WORKFLOW:
+- Step 0 = read-only audit. Zero mutations. Report and wait.
+- One logical step per turn. Evidence = verbatim code + file
+  manifest + grep proofs. End each step with
+  "STOPPING AND WAITING FOR VERIFICATION" and halt.
+- Do NOT proceed without explicit "Proceed to Step X".
+- Every prompt is self-contained; do not assume memory.
+
+COMMON DRIFTS TO WATCH:
+- Replacing one hardcoded string with another instead of
+  externalizing to resources.
+- Renaming IDs or constants when only display text changes.
+- Modifying files outside the current task's scope.
+- Skipping grep proofs for "zero references" claims.
+- Proceeding to the next step without waiting for authorization.
+- Touching the theme engine's portable public surface with
+  host-app-specific imports.
+
+Resume the current task under these rails. If the next logical
+action is a new step, execute it now and stop at the gate. If the
+next action is awaiting your authorization for a completed step,
+request it.

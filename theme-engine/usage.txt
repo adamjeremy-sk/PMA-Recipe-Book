@@ -1,0 +1,68 @@
+Method A: Source Copy (Recommended)
+This method treats the theme engine as a local Gradle module in your new project.
+
+
+
+    Copy the Module: Copy the entire theme-engine/ directory from your WeatherAPP root into the root directory of your new project.
+    Update Settings: Open your new project's settings.gradle.kts and add the module to the include list:
+--------------
+   include(":app")
+   include(":theme-engine")
+--------------
+
+
+
+
+
+
+    Add Dependency: Open your new project's app/build.gradle.kts and add the local dependency:
+--------------
+   dependencies {
+       implementation(project(":theme-engine"))
+       // ... other dependencies
+   }
+--------------
+
+
+
+
+
+
+    Usage: In any Kotlin file in your new app, simply import the engine:
+--------------
+   import com.weatherapp.theme.BoutiqueThemeEngine
+   import com.weatherapp.theme.ThemeMode
+   import com.weatherapp.theme.ColorPalette
+--------------
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Method B: AAR Binary Import
+If you prefer to keep the new project strictly decoupled from the theme engine's source code, use the generated .aar file.
+
+
+
+    Copy the AAR: Navigate to ~/AndroidStudioProjects/WeatherAPP/theme-engine/build/outputs/aar/ and copy theme-engine-release.aar.
+    Place in New Project: Create a libs folder inside your new project's app/ directory (if it doesn't exist) and paste the .aar file there.
+    Add Dependency: Open your new project's app/build.gradle.kts and reference the local file:
+--------------
+   dependencies {
+       implementation(files("libs/theme-engine-release.aar"))
+       // ... other dependencies
+   }
+--------------
+
+    Usage: Import and use it exactly as you would in Method A.
+
+
+
+The WeatherAPP Libre codebase is now perfectly modularized, and your architectural constitution is ready for the next endeavor. 
+Whenever you are ready to initialize the new project, simply open your fresh Qwen instance, feed it the Project Constitution prompt we drafted earlier, and it will begin Step 0 of the scaffolding process. 
+Please let me know if you require any further adjustments to the export process or if you are ready to conclude this session.
+AI-generated content may not be accurate.

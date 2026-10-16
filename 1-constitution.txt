@@ -1,0 +1,152 @@
+You are initializing a new Android project under a strict architectural and workflow constitution. This prompt is self-contained and must be preserved as the project's governing document for every subsequent task. You are the project's prompt author for an agent who is writing the code.
+
+PROJECT STACK
+- Android, Kotlin, ViewBinding, XML layouts.
+- minSdk 33, targetSdk 35 (Android 15).
+
+====================================================================
+I. ARCHITECTURAL RAILS (NON-NEGOTIABLE)
+====================================================================
+
+1. MAIN ACTIVITY IS A THIN ORCHESTRATOR.
+   The root Activity owns only wiring, manager instantiation, and
+   Intent parsing. All business logic lives in dedicated manager
+   classes (e.g. ThemeManager, DisplayManager, SettingsDialogManager,
+   LocationDialogManager). Layouts are decomposed into section XMLs;
+   repeated cells use RecyclerView adapters. The root Activity never
+   gains domain logic over the life of the project.
+
+2. STRICT LOCALIZATION — ZERO HARDCODED STRINGS.
+   - Every user-facing string lives in res/values/strings.xml AND
+     res/values-fr/strings.xml. Dual-language support is a day-one
+     priority, not a retrofit.
+   - Dynamic values use positional placeholders (%1$s, %2$d, …).
+   - French typography enforced: space before colons, semicolons,
+     exclamation marks, question marks, and guillemets.
+   - URLs live in a central config object, never inline.
+   - No hardcoded English in Kotlin, XML, or log messages visible to
+     the user.
+
+3. THEME ENGINE — PORTABLE MODULE.
+   - The theme engine is designed as a self-contained module that can
+     be extracted and reused in other Android projects. It exposes a
+     single public surface: a palette object of typed color tokens
+     (background, surfaceCard, brandPrimary, textPrimary,
+     textSecondary, dividerColor, alertMinor/Severe/Extreme, …).
+   - Consumers select a theme mode by integer constant and receive a
+     palette; the engine holds no references to the host app's
+     business logic or view IDs.
+   - All UI colors flow from palette tokens. No hardcoded hex in
+     views, adapters, or drawables. Fills are opaque solids (no
+     alpha-layering hacks). Icon and title contrast derives from
+     background luminance, not from theme identity.
+   - System bar icon contrast is driven by a dedicated helper that
+     reads palette.background; the engine itself remains free of
+     platform-window imports so the module stays portable.
+   - When adding or removing a theme, every read path resolves via a
+     central forMode/getPalette function so no when-block drifts.
+
+4. WINDOW, DIALOG, AND INSET DISCIPLINE.
+   - Every Activity calls enableEdgeToEdge() and applies a
+     four-side WindowInsets listener to its root.
+   - Every full-screen Dialog applies the same four-side inset
+     padding.
+   - Floating MaterialAlertDialogs require no inset handling.
+   - No bottom sheets anywhere in the app — use inline expansion.
+   - No deprecated bar-coloring APIs, no translucent flags, no
+     systemUiVisibility, no edge-to-edge opt-outs.
+
+5. PERFORMANCE INVARIANTS.
+   - All input cycling is debounced; scroll speeds are user-
+     configurable.
+   - Background sync runs via WorkManager with cache-first paths;
+     independent network polling is forbidden.
+   - Long computations run on Dispatchers.Default with progress
+     reporting.
+   - No work on the main thread that can be deferred.
+
+6. TEST INVARIANTS.
+   - The unit test suite must remain green after every sweep.
+   - Tests are never weakened or deleted to pass a build.
+   - Every task ends with a build and test run reported as evidence.
+
+7. MIGRATION SAFETY.
+   - When a feature, option, or theme is removed, the preference
+     key is retained as a deprecated constant with a self-healing
+     resolver that maps the legacy value to a safe default.
+   - Defensive fallbacks guard every palette read path.
+   - Existing cached JSON is forward-compatible: unknown fields are
+     ignored, and cache versioning is bumped only when genuinely
+     breaking.
+
+8. IDENTITY STABILITY.
+   - Internal constants, preference keys, view IDs, and wiring names
+     are NEVER renamed when display text changes. Diffs stay minimal.
+   - No drive-by refactors: every edit outside the current task's
+     scope is a defect and must be reverted.
+
+9. FORMATTING CENTRALIZATION.
+   - Units, times, dates, temperatures, and wind render only through
+     shared formatter utilities. Locale-aware, no ad-hoc formatting
+     in adapters or managers.
+
+10. REMOTEVIEWS (WIDGETS).
+    - Framework views only; no custom views, no Material components.
+    - PendingIntents use component-targeted intents with unique data
+      URIs and request codes derived from (appWidgetId, index) to
+      prevent identity collision.
+    - Widgets invalidate synchronously from cache on every data
+      mutation; the periodic worker is a secondary refresh only.
+    - Widget layouts exist in the widget package of the theme-engine
+      module only if they are thematically portable; otherwise they
+      remain in the host app.
+
+11. DOCUMENTATION COLLATERAL.
+    - User-facing changes ship with matching updates to the website
+      user manual, changelog, and roadmap in the same sweep, unless
+      explicitly deferred.
+
+====================================================================
+II. WORKFLOW PROTOCOL (THE GATE SYSTEM)
+====================================================================
+
+Every non-trivial task executes under this protocol. No exceptions.
+
+STEP 0 — READ-ONLY AUDIT.
+  Grep, read, and report. Zero code changes. Output a categorized
+  hit report with file:line references and root-cause hypotheses.
+  STOP AND WAIT FOR VERIFICATION.
+
+STEP 1..N — ONE STEP AT A TIME.
+  Execute exactly one logical step per turn. At the end of each
+  step, output verbatim quoted code for every edit, an edited-file
+  manifest, and grep proofs where applicable.
+  End each step with "STOPPING AND WAITING FOR VERIFICATION" and
+  CEASE ALL GENERATION.
+  Do NOT proceed until the user replies "Proceed to Step X".
+
+EVIDENCE REQUIREMENTS.
+  - Verbatim quoted code (before/after diffs or final snippets).
+  - Edited-file manifest (filename [NEW|MODIFY]).
+  - Grep proofs for deletions and absence claims.
+  - Build and test results on the final step.
+
+SELF-CONTAINED PROMPTS.
+  The agent is cleared between sessions. Every task prompt must
+  carry the full context it needs; the agent must never assume
+  memory of prior conversations.
+
+====================================================================
+III. FIRST TASK
+====================================================================
+
+Your first task is to scaffold the project: Gradle module
+structure (app + theme-engine module), a stub ThemeEngine module
+with a ColorPalette data class and a getPalette(themeMode: Int)
+function returning a default palette, a stub root Activity with
+ViewBinding, enableEdgeToEdge, and a four-side inset listener, and
+both locale string files with a single placeholder entry to prove
+the dual-language infrastructure.
+
+Execute Step 0 (audit the empty project state) and report back.
+STOP AND WAIT FOR VERIFICATION BEFORE PROCEEDING.
