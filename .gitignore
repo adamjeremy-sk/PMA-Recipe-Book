@@ -25,5 +25,5 @@ captures/
 # Signing keystores — never commit
 *.jks
 *.keystore
-1-constitution.txt
-2-rails.txt
+
+.spitball/

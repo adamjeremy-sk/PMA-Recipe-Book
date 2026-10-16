@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - PMA RecipeBook</title>
+    <style>
+        /* --- EMBEDDED CSS (Responsive Cellular Grid - Tahoma Font) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { height: 100%; }
+        body { 
+            font: normal .80em Tahoma, Geneva, sans-serif; 
+            background: #2A1610;
+            background-image: linear-gradient(rgba(0,0,0,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #FDF5E6; 
+            padding: 20px 0;
+        }
+        p { padding: 0 0 15px 0; line-height: 1.5em; font-size: 107%; }
+        img { border: 0; }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 { 
+            font: normal 250% Tahoma, Geneva, sans-serif; 
+            color: #D35400;
+            margin: 0 0 12px 0; 
+            padding: 0; 
+        }
+        h2 { font: normal 170% Tahoma, Geneva, sans-serif; color: #D35400; margin: 0; padding: 0 0 6px 0; }
+        h3 { font-size: 200%; margin: 0 0 8px 0; color: #D35400; }
+        h4, h5, h6 { margin: 0; padding: 0 0 5px 0; font: normal 100% Tahoma, Geneva, sans-serif; color: #D35400; line-height: 1em; }
+        h5, h6 { font: italic 95% Tahoma, Geneva, sans-serif; color: #A04000; padding-bottom: 10px; }
+        h6 { color: #D35400; }
+        
+        a, a:hover { outline: none; text-decoration: none; color: #E67E22; }
+        a:hover { text-decoration: underline; color: #F39C12; }
+        
+        ul { margin: 10px 0 15px 0; padding-left: 0; }
+        ul li { 
+            list-style-type: none; 
+            margin: 0 0 8px 0; 
+            padding: 0 0 4px 25px; 
+            line-height: 1.5em;
+            position: relative;
+        }
+        ul li:before {
+            content: "•";
+            color: #D35400;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            width: 25px;
+        }
+        
+        /* Responsive Grid Layout System */
+        #main {
+            max-width: 960px; 
+            width: 95%; 
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 24px;
+            position: relative;
+        }
+        
+        /* Universal Cell Styling */
+        .cell {
+            background: #FDF5E6;
+            border: 2px solid #000;
+            border-radius: 0;
+            padding: 24px;
+            color: #2A1610;
+            position: relative;
+        }
+        
+        /* Grid Span Helpers */
+        .span-full { grid-column: 1 / -1; }
+        
+        /* Header Cell - RESTRUCTURED */
+        .header-cell {
+            background: #3E2723;
+            color: #FDF5E6;
+            padding: 20px 24px 0 24px; /* Remove bottom padding */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-bottom: 5px solid #D35400;
+        }
+        
+        /* Header Title */
+        .header-title {
+            margin-bottom: 15px;
+        }
+        .header-title h1 {
+            font: normal 280% Tahoma, Geneva, sans-serif; 
+            margin: 0; 
+            color: #D35400; /* Orange-Brown */
+            white-space: nowrap;
+        }
+        .header-title a { 
+            color: #D35400; 
+            text-decoration: none; 
+        }
+        .header-title a:hover { 
+            color: #F39C12; 
+        }
+        
+        /* Navigation - Single Line Spanning Whole Header */
+        .header-nav-bar {
+            display: flex;
+            justify-content: space-between; /* Distributes links across full width */
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 10px; /* Space above the orange border */
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .header-nav-bar a {
+            font: normal 100% Tahoma, Geneva, sans-serif;
+            color: #FDF5E6;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .header-nav-bar a:hover {
+            color: #F39C12;
+        }
+        
+        /* Active State for Changelog */
+        .header-nav-bar a.active {
+            background: #D35400;
+            border: 2px solid #000;
+            color: #FFF;
+            font-weight: bold;
+        }
+        
+        /* Content Cell */
+        .content-cell h1 { 
+            color: #A04000; 
+            border-bottom: 2px solid #D35400; 
+            padding-bottom: 10px; 
+            margin-bottom: 15px; 
+        }
+        
+        /* Phase Cells (Generic) */
+        .phase-cell h2 {
+            color: #A04000;
+            border-bottom: 1px solid #D35400;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .phase-cell ul { margin-top: 10px; }
+        
+        /* Sidebar Stack */
+        .sidebar-stack {
+            grid-column: 2;
+            grid-row: 2 / span 6;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .sidebar-cell {
+            background: #FFF8DC;
+            text-align: center;
+        }
+        .sidebar-cell h3 { 
+            padding-bottom: 8px; 
+            margin-bottom: 10px; 
+            border-bottom: 2px solid #000; 
+            color: #A04000; 
+        }
+        .sidebar-cell h1 { 
+            color: #2A1610; 
+            margin-bottom: 8px; 
+        }
+        .sidebar-cell p { color: #3E2723; margin: 0; }
+        
+        /* Logo in Sidebar */
+        .sidebar-logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 24px auto 0 auto; 
+        }
+        
+        /* Footer Cell */
+        .footer-cell {
+            background: #3E2723;
+            color: #FDF5E6;
+            text-align: center;
+            padding: 20px;
+            border-top: 5px solid #D35400;
+        }
+        .footer-cell p { margin: 0; padding: 0; }
+        .footer-cell a { color: #F39C12; }
+        .footer-cell a:hover { color: #FFF; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            #main {
+                grid-template-columns: 1fr; 
+            }
+            .sidebar-stack {
+                grid-column: 1;
+                grid-row: auto;
+            }
+            .header-cell {
+                padding: 20px 24px 0 24px;
+            }
+            .header-title {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .header-nav-bar {
+                justify-content: center; /* Center links on mobile */
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <!-- Header Cell -->
+    <header class="cell header-cell span-full">
+        <div class="header-title">
+            <h1><a href="index.html">PMA Recipe Book</a></h1>
+        </div>
+        <nav class="header-nav-bar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="license.html">License</a>
+            <a href="usermanual.html">User Manual</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="changelog.html" class="active">Changelog</a>
+            <a href="support-contact.html">Contact</a>
+        </nav>
+    </header>
+    
+    <!-- Intro Cell -->
+    <div class="cell content-cell">
+        <h1>Version History</h1>
+        <p>Welcome to the changelog. Here you will find a detailed record of all updates, bug fixes, and new features added to PMA Recipe Book. We adhere to a strict versioning policy and ensure that every update is documented transparently.</p>
+        <p>For technical details regarding specific commits, please refer to our open-source repository.</p>
+    </div>
+    
+    <!-- Sidebar Stack (Right Column) -->
+    <aside class="sidebar-stack">
+        <div class="cell sidebar-cell">
+            <h3>Latest Version</h3>
+            <h1>v1.0.0</h1>
+            <p>Released: [Date Placeholder]</p>
+        </div>
+        <div class="cell sidebar-cell">
+            <h3>Build Type</h3>
+            <h1>Stable</h1>
+            <p>This build is considered production-ready.</p>
+        </div>
+        <!-- Logo -->
+        <a href="index.html">
+            <img src="logo.png" alt="Puppet Monkey Apps Logo" class="sidebar-logo">
+        </a>
+    </aside>
+    
+    <!-- Version 1.0.0 Cell -->
+    <div class="cell phase-cell">
+        <h2>Version 1.0.0 - The Grand Release</h2>
+        <p>The initial stable release of PMA Recipe Book. This version establishes the core architecture and introduces the unique "Tin" interface.</p>
+        <ul>
+            <li><strong>Feature:</strong> Implemented the "Tin" Rolodex-style scrolling interface.</li>
+            <li><strong>Feature:</strong> Added Volume Key navigation for hands-free control.</li>
+            <li><strong>Feature:</strong> Launched the Flavor Engine with initial vector mapping for 500+ ingredients.</li>
+            <li><strong>Feature:</strong> Integrated the Boutique Theme Engine (Crema, Charcoal, Cobalt, Jade).</li>
+            <li><strong>System:</strong> Implemented strict English/French localization with correct typography rules.</li>
+            <li><strong>System:</strong> Established the Relational Culinary Database.</li>
+            <li><strong>Bug Fix:</strong> Resolved layout clipping on small-screen devices.</li>
+        </ul>
+    </div>
+    
+    <!-- Version 0.9.0 Cell -->
+    <div class="cell phase-cell">
+        <h2>Version 0.9.0 - Public Beta</h2>
+        <p>The public beta release allowed for community testing of the substitution engine and scaling features.</p>
+        <ul>
+            <li><strong>Feature:</strong> Added Cosine Similarity calculation for ingredient substitutions.</li>
+            <li><strong>Feature:</strong> Implemented Volumetric-to-Mass conversion database.</li>
+            <li><strong>Feature:</strong> Added "Usage Tallies" to track recipe frequency.</li>
+            <li><strong>Improvement:</strong> Optimized database queries for faster search results.</li>
+            <li><strong>Improvement:</strong> Refined the "Fraction Formatter" to display fractions like 1/2 instead of 0.5.</li>
+            <li><strong>Bug Fix:</strong> Fixed an issue where specific French characters caused text overflow in the sidebar.</li>
+        </ul>
+    </div>
+    
+    <!-- Version 0.8.0 Cell -->
+    <div class="cell phase-cell">
+        <h2>Version 0.8.0 - Alpha Testing</h2>
+        <p>Internal alpha testing focused on the core data models and the Theme Engine.</p>
+        <ul>
+            <li><strong>Feature:</strong> Initial implementation of the Domain-Driven Data Models.</li>
+            <li><strong>Feature:</strong> Created the portable Boutique Theme Engine.</li>
+            <li><strong>Feature:</strong> Added basic Recipe CRUD (Create, Read, Update, Delete) functionality.</li>
+            <li><strong>System:</strong> Migrated theme engine to neutral package namespace for portability.</li>
+            <li><strong>Refactor:</strong> Decoupled the Root Activity to act strictly as a thin orchestrator.</li>
+        </ul>
+    </div>
+    
+    <!-- Footer Cell -->
+    <footer class="cell footer-cell span-full">
+        <p>Copyright &copy; PMA RecipeBook | <a href="index.html">Home</a> | <a href="support-contact.html">Contact</a></p>
+    </footer>
+</div>
+</body>
+</html>

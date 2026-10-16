@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License - PMA RecipeBook</title>
+    <style>
+        /* --- EMBEDDED CSS (Responsive Cellular Grid - Tahoma Font) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { height: 100%; }
+        body { 
+            font: normal .80em Tahoma, Geneva, sans-serif; 
+            background: #2A1610;
+            background-image: linear-gradient(rgba(0,0,0,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #FDF5E6; 
+            padding: 20px 0;
+        }
+        p { padding: 0 0 15px 0; line-height: 1.5em; font-size: 107%; }
+        img { border: 0; }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 { 
+            font: normal 250% Tahoma, Geneva, sans-serif; 
+            color: #D35400;
+            margin: 0 0 12px 0; 
+            padding: 0; 
+        }
+        h2 { font: normal 170% Tahoma, Geneva, sans-serif; color: #D35400; margin: 0; padding: 0 0 6px 0; }
+        h3 { font-size: 200%; margin: 0 0 8px 0; color: #D35400; }
+        h4, h5, h6 { margin: 0; padding: 0 0 5px 0; font: normal 100% Tahoma, Geneva, sans-serif; color: #D35400; line-height: 1em; }
+        h5, h6 { font: italic 95% Tahoma, Geneva, sans-serif; color: #A04000; padding-bottom: 10px; }
+        h6 { color: #D35400; }
+        
+        a, a:hover { outline: none; text-decoration: none; color: #E67E22; }
+        a:hover { text-decoration: underline; color: #F39C12; }
+        
+        ul { margin: 10px 0 15px 0; padding-left: 0; }
+        ul li { 
+            list-style-type: none; 
+            margin: 0 0 8px 0; 
+            padding: 0 0 4px 25px; 
+            line-height: 1.5em;
+            position: relative;
+        }
+        ul li:before {
+            content: "•";
+            color: #D35400;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            width: 25px;
+        }
+        
+        /* Responsive Grid Layout System */
+        #main {
+            max-width: 960px; 
+            width: 95%; 
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 24px;
+            position: relative;
+        }
+        
+        /* Universal Cell Styling */
+        .cell {
+            background: #FDF5E6;
+            border: 2px solid #000;
+            border-radius: 0;
+            padding: 24px;
+            color: #2A1610;
+            position: relative;
+        }
+        
+        /* Grid Span Helpers */
+        .span-full { grid-column: 1 / -1; }
+        
+        /* Header Cell - RESTRUCTURED */
+        .header-cell {
+            background: #3E2723;
+            color: #FDF5E6;
+            padding: 20px 24px 0 24px; /* Remove bottom padding */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-bottom: 5px solid #D35400;
+        }
+        
+        /* Header Title */
+        .header-title {
+            margin-bottom: 15px;
+        }
+        .header-title h1 {
+            font: normal 280% Tahoma, Geneva, sans-serif; 
+            margin: 0; 
+            color: #D35400; /* Orange-Brown */
+            white-space: nowrap;
+        }
+        .header-title a { 
+            color: #D35400; 
+            text-decoration: none; 
+        }
+        .header-title a:hover { 
+            color: #F39C12; 
+        }
+        
+        /* Navigation - Single Line Spanning Whole Header */
+        .header-nav-bar {
+            display: flex;
+            justify-content: space-between; /* Distributes links across full width */
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 10px; /* Space above the orange border */
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .header-nav-bar a {
+            font: normal 100% Tahoma, Geneva, sans-serif;
+            color: #FDF5E6;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .header-nav-bar a:hover {
+            color: #F39C12;
+        }
+        
+        /* Active State for License */
+        .header-nav-bar a.active {
+            background: #D35400;
+            border: 2px solid #000;
+            color: #FFF;
+            font-weight: bold;
+        }
+        
+        /* Content Cell */
+        .content-cell h1 { 
+            color: #A04000; 
+            border-bottom: 2px solid #D35400; 
+            padding-bottom: 10px; 
+            margin-bottom: 15px; 
+        }
+        
+        /* Phase Cells (Generic) */
+        .phase-cell h2 {
+            color: #A04000;
+            border-bottom: 1px solid #D35400;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .phase-cell ul { margin-top: 10px; }
+        
+        /* Sidebar Stack */
+        .sidebar-stack {
+            grid-column: 2;
+            grid-row: 2 / span 6;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .sidebar-cell {
+            background: #FFF8DC;
+            text-align: center;
+        }
+        .sidebar-cell h3 { 
+            padding-bottom: 8px; 
+            margin-bottom: 10px; 
+            border-bottom: 2px solid #000; 
+            color: #A04000; 
+        }
+        .sidebar-cell h1 { 
+            color: #2A1610; 
+            margin-bottom: 8px; 
+        }
+        .sidebar-cell p { color: #3E2723; margin: 0; }
+        
+        /* Logo in Sidebar */
+        .sidebar-logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 24px auto 0 auto; 
+        }
+        
+        /* Footer Cell */
+        .footer-cell {
+            background: #3E2723;
+            color: #FDF5E6;
+            text-align: center;
+            padding: 20px;
+            border-top: 5px solid #D35400;
+        }
+        .footer-cell p { margin: 0; padding: 0; }
+        .footer-cell a { color: #F39C12; }
+        .footer-cell a:hover { color: #FFF; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            #main {
+                grid-template-columns: 1fr; 
+            }
+            .sidebar-stack {
+                grid-column: 1;
+                grid-row: auto;
+            }
+            .header-cell {
+                padding: 20px 24px 0 24px;
+            }
+            .header-title {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .header-nav-bar {
+                justify-content: center; /* Center links on mobile */
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <!-- Header Cell -->
+    <header class="cell header-cell span-full">
+        <div class="header-title">
+            <h1><a href="index.html">PMA Recipe Book</a></h1>
+        </div>
+        <nav class="header-nav-bar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="license.html" class="active">License</a>
+            <a href="usermanual.html">User Manual</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="changelog.html">Changelog</a>
+            <a href="support-contact.html">Contact</a>
+        </nav>
+    </header>
+    
+    <!-- Intro Cell -->
+    <div class="cell content-cell">
+        <h1>GNU General Public License v3.0</h1>
+        <p>PMA Recipe Book is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+        <p>PMA Recipe Book is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+    </div>
+    
+    <!-- Sidebar Stack (Right Column) -->
+    <aside class="sidebar-stack">
+        <div class="cell sidebar-cell">
+            <h3>License Type</h3>
+            <h1>GPL v3.0</h1>
+            <p>Copyleft License. All derivative works must also be open source under this license.</p>
+        </div>
+        <div class="cell sidebar-cell">
+            <h3>Source Code</h3>
+            <h1>Open Source</h1>
+            <p>You have the right to access, modify, and distribute the source code.</p>
+        </div>
+        <!-- Logo -->
+        <a href="index.html">
+            <img src="logo.png" alt="Puppet Monkey Apps Logo" class="sidebar-logo">
+        </a>
+    </aside>
+    
+    <!-- Clause 1 Cell -->
+    <div class="cell phase-cell">
+        <h2>Clause 1: Source Code</h2>
+        <p>The source code for PMA Recipe Book is made available to you. You have the freedom to study how the program works, and change it so it does your computing as you wish.</p>
+        <ul>
+            <li><strong>Access:</strong> Source code is provided with the application.</li>
+            <li><strong>Modifications:</strong> You may modify the source code to suit your needs.</li>
+            <li><strong>Build:</strong> Instructions for building the app from source are included.</li>
+        </ul>
+    </div>
+    
+    <!-- Clause 2 Cell -->
+    <div class="cell phase-cell">
+        <h2>Clause 2: Distribution Rights</h2>
+        <p>You may copy and distribute the Program (or a work based on it) in Object Code or Executable form under the terms of Sections 1 and 2 above provided that you also do one of the following:</p>
+        <ul>
+            <li><strong>Accompany:</strong> Accompany it with the complete corresponding machine-readable Source Code.</li>
+            <li><strong>Offer:</strong> Offer to provide the Source Code upon request (for a charge no more than your cost of physically performing this).</li>
+        </ul>
+    </div>
+    
+    <!-- Clause 3 Cell -->
+    <div class="cell phase-cell">
+        <h2>Clause 3: Copyleft</h2>
+        <p>If you convey a work based on the Program, the work's Corresponding Source must be licensed under this License. You must cause any work that you distribute or publish, that in whole or in part contains or is derived from the Program, to be licensed as a whole at no charge to all third parties under the terms of this License.</p>
+        <ul>
+            <li><strong>Derivatives:</strong> Any modified version must also be GPL 3.0.</li>
+            <li><strong>No Additional Restrictions:</strong> You may not impose any further restrictions on the exercise of the rights granted or affirmed under this License.</li>
+        </ul>
+    </div>
+    
+    <!-- Clause 4 Cell -->
+    <div class="cell phase-cell">
+        <h2>Clause 4: No Warranty</h2>
+        <p>THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED.</p>
+        <ul>
+            <li><strong>As Is:</strong> The entire risk as to the quality and performance of the program is with you.</li>
+            <li><strong>Liability:</strong> In no event will any copyright holder be liable to you for damages.</li>
+        </ul>
+    </div>
+    
+    <!-- Full Text Cell -->
+    <div class="cell phase-cell">
+        <h2>Full License Text</h2>
+        <p>For the complete text of the GNU General Public License v3.0, please visit the official Free Software Foundation website.</p>
+        <ul>
+            <li><strong>Official Link:</strong> <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">Read GPL v3.0 Online</a></li>
+            <li><strong>PDF:</strong> <a href="https://www.gnu.org/licenses/gpl-3.0.txt" target="_blank">Download Text Version</a></li>
+        </ul>
+    </div>
+    
+    <!-- Footer Cell -->
+    <footer class="cell footer-cell span-full">
+        <p>Copyright &copy; PMA RecipeBook | <a href="index.html">Home</a> | <a href="support-contact.html">Contact</a></p>
+    </footer>
+</div>
+</body>
+</html>

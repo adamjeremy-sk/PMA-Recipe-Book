@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - PMA RecipeBook</title>
+    <style>
+        /* --- EMBEDDED CSS (Responsive Cellular Grid - Tahoma Font) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { height: 100%; }
+        body { 
+            font: normal .80em Tahoma, Geneva, sans-serif; 
+            background: #2A1610;
+            background-image: linear-gradient(rgba(0,0,0,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #FDF5E6; 
+            padding: 20px 0;
+        }
+        p { padding: 0 0 15px 0; line-height: 1.5em; font-size: 107%; }
+        img { border: 0; }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 { 
+            font: normal 250% Tahoma, Geneva, sans-serif; 
+            color: #D35400;
+            margin: 0 0 12px 0; 
+            padding: 0; 
+        }
+        h2 { font: normal 170% Tahoma, Geneva, sans-serif; color: #D35400; margin: 0; padding: 0 0 6px 0; }
+        h3 { font-size: 200%; margin: 0 0 8px 0; color: #D35400; }
+        h4, h5, h6 { margin: 0; padding: 0 0 5px 0; font: normal 100% Tahoma, Geneva, sans-serif; color: #D35400; line-height: 1em; }
+        h5, h6 { font: italic 95% Tahoma, Geneva, sans-serif; color: #A04000; padding-bottom: 10px; }
+        h6 { color: #D35400; }
+        
+        a, a:hover { outline: none; text-decoration: none; color: #E67E22; }
+        a:hover { text-decoration: underline; color: #F39C12; }
+        
+        ul { margin: 10px 0 15px 0; padding-left: 0; }
+        ul li { 
+            list-style-type: none; 
+            margin: 0 0 8px 0; 
+            padding: 0 0 4px 25px; 
+            line-height: 1.5em;
+            position: relative;
+        }
+        ul li:before {
+            content: "•";
+            color: #D35400;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            width: 25px;
+        }
+        
+        /* Responsive Grid Layout System */
+        #main {
+            max-width: 960px; 
+            width: 95%; 
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 24px;
+            position: relative;
+        }
+        
+        /* Universal Cell Styling */
+        .cell {
+            background: #FDF5E6;
+            border: 2px solid #000;
+            border-radius: 0;
+            padding: 24px;
+            color: #2A1610;
+            position: relative;
+        }
+        
+        /* Grid Span Helpers */
+        .span-full { grid-column: 1 / -1; }
+        
+        /* Header Cell - RESTRUCTURED */
+        .header-cell {
+            background: #3E2723;
+            color: #FDF5E6;
+            padding: 20px 24px 0 24px; /* Remove bottom padding */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-bottom: 5px solid #D35400;
+        }
+        
+        /* Header Title */
+        .header-title {
+            margin-bottom: 15px;
+        }
+        .header-title h1 {
+            font: normal 280% Tahoma, Geneva, sans-serif; 
+            margin: 0; 
+            color: #D35400; /* Orange-Brown */
+            white-space: nowrap;
+        }
+        .header-title a { 
+            color: #D35400; 
+            text-decoration: none; 
+        }
+        .header-title a:hover { 
+            color: #F39C12; 
+        }
+        
+        /* Navigation - Single Line Spanning Whole Header */
+        .header-nav-bar {
+            display: flex;
+            justify-content: space-between; /* Distributes links across full width */
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 10px; /* Space above the orange border */
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .header-nav-bar a {
+            font: normal 100% Tahoma, Geneva, sans-serif;
+            color: #FDF5E6;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .header-nav-bar a:hover {
+            color: #F39C12;
+        }
+        
+        /* Active State for Contact */
+        .header-nav-bar a.active {
+            background: #D35400;
+            border: 2px solid #000;
+            color: #FFF;
+            font-weight: bold;
+        }
+        
+        /* Content Cell */
+        .content-cell h1 { 
+            color: #A04000; 
+            border-bottom: 2px solid #D35400; 
+            padding-bottom: 10px; 
+            margin-bottom: 15px; 
+        }
+        
+        /* Phase Cells (Generic) */
+        .phase-cell h2 {
+            color: #A04000;
+            border-bottom: 1px solid #D35400;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .phase-cell ul { margin-top: 10px; }
+        
+        /* Sidebar Stack */
+        .sidebar-stack {
+            grid-column: 2;
+            grid-row: 2 / span 6;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .sidebar-cell {
+            background: #FFF8DC;
+            text-align: center;
+        }
+        .sidebar-cell h3 { 
+            padding-bottom: 8px; 
+            margin-bottom: 10px; 
+            border-bottom: 2px solid #000; 
+            color: #A04000; 
+        }
+        .sidebar-cell h1 { 
+            color: #2A1610; 
+            margin-bottom: 8px; 
+        }
+        .sidebar-cell p { color: #3E2723; margin: 0; }
+        
+        /* Logo in Sidebar */
+        .sidebar-logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 24px auto 0 auto; 
+        }
+        
+        /* Footer Cell */
+        .footer-cell {
+            background: #3E2723;
+            color: #FDF5E6;
+            text-align: center;
+            padding: 20px;
+            border-top: 5px solid #D35400;
+        }
+        .footer-cell p { margin: 0; padding: 0; }
+        .footer-cell a { color: #F39C12; }
+        .footer-cell a:hover { color: #FFF; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            #main {
+                grid-template-columns: 1fr; 
+            }
+            .sidebar-stack {
+                grid-column: 1;
+                grid-row: auto;
+            }
+            .header-cell {
+                padding: 20px 24px 0 24px;
+            }
+            .header-title {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .header-nav-bar {
+                justify-content: center; /* Center links on mobile */
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <!-- Header Cell -->
+    <header class="cell header-cell span-full">
+        <div class="header-title">
+            <h1><a href="index.html">PMA Recipe Book</a></h1>
+        </div>
+        <nav class="header-nav-bar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="license.html">License</a>
+            <a href="usermanual.html">User Manual</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="changelog.html">Changelog</a>
+            <a href="support-contact.html" class="active">Contact</a>
+        </nav>
+    </header>
+    
+    <!-- Intro Cell -->
+    <div class="cell content-cell">
+        <h1>Contact & Support</h1>
+        <p>We value your feedback and are committed to the continuous improvement of PMA Recipe Book. Whether you have encountered a bug, have a feature request, or need assistance with the application, please do not hesitate to reach out.</p>
+        <p>Our team adheres to strict architectural discipline and responsiveness. We aim to address all inquiries in a timely manner.</p>
+    </div>
+    
+    <!-- Sidebar Stack (Right Column) -->
+    <aside class="sidebar-stack">
+        <div class="cell sidebar-cell">
+            <h3>Primary Contact</h3>
+            <h1>Email Us</h1>
+            <p>For general inquiries and support.</p>
+        </div>
+        <div class="cell sidebar-cell">
+            <h3>Response Time</h3>
+            <h1>24-48 Hours</h1>
+            <p>We strive to respond to all emails within two business days.</p>
+        </div>
+        <!-- Logo -->
+        <a href="index.html">
+            <img src="logo.png" alt="Puppet Monkey Apps Logo" class="sidebar-logo">
+        </a>
+    </aside>
+    
+    <!-- Email Cell -->
+    <div class="cell phase-cell">
+        <h2>General Support</h2>
+        <p>For all general support inquiries, account issues, or questions regarding the application's functionality, please contact us via email.</p>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:support@weatherapplibre.ca">support@weatherapplibre.ca</a></li>
+            <li><strong>Subject Line:</strong> Please include "PMA RecipeBook Support" in your subject line for faster routing.</li>
+            <li><strong>Details:</strong> Include your device model and Android version to help us diagnose issues more effectively.</li>
+        </ul>
+    </div>
+    
+    <!-- Bug Reports Cell -->
+    <div class="cell phase-cell">
+        <h2>Bug Reports</h2>
+        <p>We rely on our community to help us identify and resolve defects. If you encounter unexpected behavior, please report it.</p>
+        <ul>
+            <li><strong>Steps to Reproduce:</strong> Clearly outline the actions that led to the issue.</li>
+            <li><strong>Expected Behavior:</strong> Describe what you expected to happen.</li>
+            <li><strong>Actual Behavior:</strong> Describe what actually happened.</li>
+            <li><strong>Screenshots:</strong> Attach screenshots if the issue is visual or related to the UI layout.</li>
+        </ul>
+    </div>
+    
+    <!-- Feature Requests Cell -->
+    <div class="cell phase-cell">
+        <h2>Feature Requests</h2>
+        <p>We are always looking to expand the capabilities of the Flavor Engine and the Culinary Physics database. We welcome your suggestions.</p>
+        <ul>
+            <li><strong>New Ingredients:</strong> Requests for new entries in the density or flavor vector database.</li>
+            <li><strong>UI Enhancements:</strong> Suggestions for improving the "Tin" interface or theme engine.</li>
+            <li><strong>Workflow Improvements:</strong> Ideas for streamlining recipe entry or scaling.</li>
+        </ul>
+    </div>
+    
+    <!-- Privacy Cell -->
+    <div class="cell phase-cell">
+        <h2>Privacy & Data</h2>
+        <p>PMA Recipe Book is designed with privacy in mind. All recipe data and flavor profiles are stored locally on your device.</p>
+        <ul>
+            <li><strong>No Cloud Sync:</strong> We do not currently offer cloud synchronization, ensuring your data remains yours.</li>
+            <li><strong>No Telemetry:</strong> The application does not transmit usage statistics or personal data to external servers.</li>
+            <li><strong>Local Storage:</strong> Your data is secure within the application's sandboxed storage.</li>
+        </ul>
+    </div>
+    
+    <!-- Footer Cell -->
+    <footer class="cell footer-cell span-full">
+        <p>Copyright &copy; PMA RecipeBook | <a href="index.html">Home</a> | <a href="support-contact.html">Contact</a></p>
+    </footer>
+</div>
+</body>
+</html>
