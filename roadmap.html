@@ -60,6 +60,7 @@
             display: grid;
             grid-template-columns: 1fr 250px;
             gap: 24px;
+            position: relative; /* Anchor for absolute positioning */
         }
         
         /* Universal Cell Styling */
@@ -69,6 +70,7 @@
             border-radius: 0; /* Sharp edges */
             padding: 24px;
             color: #2A1610;
+            position: relative; /* Context for absolute children if needed */
         }
         
         /* Grid Span Helpers */
@@ -83,15 +85,38 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 5px solid #D35400;
+            overflow: visible; /* Allow logo to overlap */
         }
-        .logo-wrapper {
+        
+        /* Floating Logo Implementation */
+        .floating-logo {
+            position: absolute;
+            top: -40px;
+            left: -20px;
+            width: 240px; /* Approx twice the size of previous constraints */
+            transform: rotate(-30deg);
+            z-index: 50;
+            pointer-events: none; /* Allow clicking through the logo to the header if necessary */
+        }
+        
+        /* Header Text Anchor */
+        .header-text-anchor {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
-        .header-logo {
-            max-height: 85px;
-            width: auto;
-            display: block;
+        .header-text-anchor h1 {
+            font: normal 350% 'Yanone Kaffeesatz', arial, sans-serif; 
+            margin: 0; 
+            color: #FDF5E6; 
+            white-space: nowrap;
+        }
+        .header-text-anchor a { 
+            color: #F39C12; 
+            text-decoration: none; 
+        }
+        .header-text-anchor a:hover { 
+            color: #FFF; 
         }
         
         /* Navigation */
@@ -172,12 +197,13 @@
 </head>
 <body>
 <div id="main">
+    <!-- Floating Logo (Decoupled from Grid Flow) -->
+    <img src="logo.png" alt="Puppet Monkey Apps" class="floating-logo">
+
     <!-- Header Cell -->
     <header class="cell header-cell span-full">
-        <div class="logo-wrapper">
-            <a href="index.html">
-                <img src="logo.png" alt="Puppet Monkey Apps Logo" class="header-logo">
-            </a>
+        <div class="header-text-anchor">
+            <h1><a href="index.html">PMA Recipe Book</a></h1>
         </div>
         <nav>
             <ul id="menu">
