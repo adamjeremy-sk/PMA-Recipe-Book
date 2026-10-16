@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap - PMA RecipeBook</title>
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Tangerine" rel="stylesheet">
+    <style>
+        /* --- EMBEDDED CSS (Modular Cellular Grid Layout) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { height: 100%; }
+        body { 
+            font: normal .80em 'trebuchet ms', arial, sans-serif; 
+            background: #2A1610;
+            background-image: linear-gradient(rgba(0,0,0,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #FDF5E6; 
+            padding: 20px 0;
+        }
+        p { padding: 0 0 15px 0; line-height: 1.5em; font-size: 107%; }
+        img { border: 0; }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 { 
+            font: normal 250% 'Yanone Kaffeesatz', arial, sans-serif; 
+            color: #D35400;
+            margin: 0 0 12px 0; 
+            padding: 0; 
+        }
+        h2 { font: normal 170% 'Yanone Kaffeesatz', arial, sans-serif; color: #D35400; margin: 0; padding: 0 0 6px 0; }
+        h3 { font-size: 200%; margin: 0 0 8px 0; color: #D35400; }
+        h4, h5, h6 { margin: 0; padding: 0 0 5px 0; font: normal 100% arial, sans-serif; color: #D35400; line-height: 1em; }
+        h5, h6 { font: italic 95% arial, sans-serif; color: #A04000; padding-bottom: 10px; }
+        h6 { color: #D35400; }
+        
+        a, a:hover { outline: none; text-decoration: none; color: #E67E22; }
+        a:hover { text-decoration: underline; color: #F39C12; }
+        
+        ul { margin: 10px 0 15px 0; padding-left: 0; }
+        ul li { 
+            list-style-type: none; 
+            margin: 0 0 8px 0; 
+            padding: 0 0 4px 25px; 
+            line-height: 1.5em;
+            position: relative;
+        }
+        ul li:before {
+            content: "•";
+            color: #D35400;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            width: 25px;
+        }
+        
+        /* Grid Layout System */
+        #main {
+            width: 960px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 24px;
+        }
+        
+        /* Universal Cell Styling */
+        .cell {
+            background: #FDF5E6;
+            border: 2px solid #000;
+            border-radius: 0; /* Sharp edges */
+            padding: 24px;
+            color: #2A1610;
+        }
+        
+        /* Grid Span Helpers */
+        .span-full { grid-column: 1 / -1; }
+        
+        /* Header Cell */
+        .header-cell {
+            background: #3E2723;
+            color: #FDF5E6;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 5px solid #D35400;
+        }
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .header-logo {
+            max-height: 85px;
+            width: auto;
+            display: block;
+        }
+        
+        /* Navigation */
+        ul#menu { 
+            list-style-type: none; 
+            display: flex; 
+            gap: 5px; 
+        }
+        ul#menu li { float: none; padding: 0; margin: 0; position: static; }
+        ul#menu li a { 
+            font: normal 160% 'Yanone Kaffeesatz', sans-serif; 
+            color: #FDF5E6; 
+            padding: 8px 16px; 
+            display: block; 
+            border: 1px solid transparent;
+        }
+        ul#menu li.current a { 
+            background: #D35400; 
+            border: 2px solid #000; 
+            color: #FFF; 
+        }
+        ul#menu li a:hover { color: #F39C12; }
+        ul#menu li:before { content: none; } /* Remove bullet override */
+        
+        /* Content Cell */
+        .content-cell h1 { 
+            color: #A04000; 
+            border-bottom: 2px solid #D35400; 
+            padding-bottom: 10px; 
+            margin-bottom: 15px; 
+        }
+        
+        /* Phase Cells */
+        .phase-cell h2 {
+            color: #A04000;
+            border-bottom: 1px solid #D35400;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .phase-cell ul { margin-top: 10px; }
+        
+        /* Sidebar Stack */
+        .sidebar-stack {
+            grid-column: 2;
+            grid-row: 2 / span 6; /* Spans across intro + 4 phases */
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .sidebar-cell {
+            background: #FFF8DC;
+            text-align: center;
+        }
+        .sidebar-cell h3 { 
+            padding-bottom: 8px; 
+            margin-bottom: 10px; 
+            border-bottom: 2px solid #000; 
+            color: #A04000; 
+        }
+        .sidebar-cell h1 { 
+            color: #2A1610; 
+            margin-bottom: 8px; 
+        }
+        .sidebar-cell p { color: #3E2723; margin: 0; }
+        
+        /* Footer Cell */
+        .footer-cell {
+            background: #3E2723;
+            color: #FDF5E6;
+            text-align: center;
+            padding: 20px;
+            border-top: 5px solid #D35400;
+        }
+        .footer-cell p { margin: 0; padding: 0; }
+        .footer-cell a { color: #F39C12; }
+        .footer-cell a:hover { color: #FFF; }
+    </style>
+</head>
+<body>
+<div id="main">
+    <!-- Header Cell -->
+    <header class="cell header-cell span-full">
+        <div class="logo-wrapper">
+            <a href="index.html">
+                <img src="logo.png" alt="Puppet Monkey Apps Logo" class="header-logo">
+            </a>
+        </div>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="license.html">License</a></li>
+                <li><a href="usermanual.html">User Manual</a></li>
+                <li class="current"><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+                <li><a href="support-contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Intro Cell -->
+    <div class="cell content-cell">
+        <h1>Development Roadmap</h1>
+        <p>Welcome to the official development roadmap. Our goal is to build more than just a digital notepad; we are crafting a relational culinary knowledge base and an interactive execution environment.</p>
+    </div>
+    
+    <!-- Sidebar Stack (Right Column) -->
+    <aside class="sidebar-stack">
+        <div class="cell sidebar-cell">
+            <h3>Current Focus</h3>
+            <h1>Phase 1</h1>
+            <p>We are currently architecting the Relational Culinary Database and the Volumetric-to-Mass conversion engine.</p>
+        </div>
+        <div class="cell sidebar-cell">
+            <h3>Project Status</h3>
+            <h1>Active</h1>
+            <p>Core UI and Domain Models are established. Flavor vector mapping in progress.</p>
+        </div>
+    </aside>
+    
+    <!-- Phase 1 Cell -->
+    <div class="cell phase-cell">
+        <h2>Phase 1: The Foundation & The Tin</h2>
+        <p>The first phase focuses on the core architectural foundation and our unique presentation layer.</p>
+        <ul>
+            <li><strong>The "Tin" Interface:</strong> Implementing the bespoke Rolodex-style scrolling interface, allowing for frictionless, hands-free navigation using hardware volume buttons.</li>
+            <li><strong>Theme Engine:</strong> Integrating our portable, luminance-driven Boutique Theme Engine with multiple palettes (Crema, Charcoal, Cobalt, Jade, etc.).</li>
+            <li><strong>Core Architecture:</strong> Establishing the strict domain-driven data models and localization infrastructure (English/French).</li>
+        </ul>
+    </div>
+    
+    <!-- Phase 2 Cell -->
+    <div class="cell phase-cell">
+        <h2>Phase 2: The Culinary Database</h2>
+        <p>Building the scientific backbone of the application.</p>
+        <ul>
+            <li><strong>Relational Entities:</strong> Normalizing Recipes, Ingredients, Instructions, and Techniques into a robust local SQL database.</li>
+            <li><strong>Culinary Physics:</strong> Implementing the Volumetric-to-Mass conversion database, allowing users to seamlessly switch between cups and grams based on specific ingredient densities.</li>
+            <li><strong>Recipe Scaling:</strong> Mathematical scaling of recipes with intelligent fraction formatting (e.g., 1/2 tsp instead of 0.5 tsp).</li>
+        </ul>
+    </div>
+    
+    <!-- Phase 3 Cell -->
+    <div class="cell phase-cell">
+        <h2>Phase 3: The Flavor Engine</h2>
+        <p>Where the magic happens. Moving beyond simple lists into a deterministic flavor network.</p>
+        <ul>
+            <li><strong>Flavor Vectors:</strong> Mapping every ingredient to a multi-dimensional vector covering the 5 basic tastes, aroma categories (fruity, floral, herbal, spicy, roasted, earthy, pungent), and mouthfeel.</li>
+            <li><strong>Substitution Engine:</strong> Using cosine similarity to mathematically calculate and suggest the best possible substitutes for missing ingredients.</li>
+            <li><strong>Clickable Ingredients:</strong> Tapping an ingredient reveals its full aromatic and flavor profile.</li>
+        </ul>
+    </div>
+    
+    <!-- Phase 4 Cell -->
+    <div class="cell phase-cell">
+        <h2>Phase 4: Smart Recommendations & Polish</h2>
+        <p>Personalizing the experience and finalizing the application for release.</p>
+        <ul>
+            <li><strong>Usage Tallies:</strong> Tracking recipe popularity and execution logs to understand user preferences.</li>
+            <li><strong>Heuristic Recommendations:</strong> Generating recipe suggestions based on frequently used ingredients and flavor affinities.</li>
+            <li><strong>Monetization:</strong> Implementing the free ad-supported tier and the one-time purchase to remove ads forever.</li>
+            <li><strong>Accessibility Audit:</strong> Ensuring the custom Rolodex UI and hardware navigation are fully compliant with screen readers.</li>
+        </ul>
+    </div>
+    
+    <!-- Future Horizons Cell -->
+    <div class="cell phase-cell">
+        <h2>Future Horizons (Backburner)</h2>
+        <p>Features planned for post-launch updates.</p>
+        <ul>
+            <li><strong>Import Engine:</strong> The ability to import recipes from other popular recipe applications and websites.</li>
+            <li><strong>Community Sharing:</strong> Exporting and sharing your custom flavor profiles and recipe creations.</li>
+        </ul>
+    </div>
+    
+    <!-- Footer Cell -->
+    <footer class="cell footer-cell span-full">
+        <p>Copyright &copy; PMA RecipeBook | <a href="index.html">Home</a> | <a href="support-contact.html">Contact</a></p>
+    </footer>
+</div>
+</body>
+</html>

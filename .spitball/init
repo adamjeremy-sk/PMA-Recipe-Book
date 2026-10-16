@@ -1,0 +1,33 @@
+I am working to create a recipe book application. We are doing some spitballing before we start anything and I'd like your input.
+
+Some things we need to discuss:
+
+1) What is a recipe book application?
+2) What do we want the interface do be like?
+3) What features do we want?
+4) What differentiates it from other recipe book apps?
+5) What is our monetization policy and goals?
+
+------------------
+
+For me a recipe book application is more than just something to write ingredients and a structure. We want to be able to explore the ingredients and techniques.
+
+Which brings me to the interface. I want to look like a rolodex or an old recipe book tin with the papers in it. When the user uses the volume buttons or scrolls up or down the recipes scroll through. I want a hamburger menu button on the top left that slides open a drawer with your menu options on the left. 
+
+For features, I want the user to be able to enter their ingredients and it becomes a clickable item. More on that in a bit. But the clickable item ingredients are at the top, and the instructions near the bottom.
+
+I want to be able to scale recipes for the user, and use a database to help the user convert from volumetric to mass for their recipes. And back if they need to.
+
+I want to have an option for the user to click the ingredient, and it will pull up a flavour profile. The aromas, the flavours (sweet, spicy, salty, bitter, umami). I want to create almost a neural network of flavours, aromas, and textures that we can cross reference.
+
+I want the user to be able to use this for substitutions.
+
+I want to profile the users recipes that they have, and be able to generate recipes they may like from ingredients they frequently use. Perhaps a tally to mark how many times they've used the recipe so popularity can be tracked.
+
+The ability to import from other popular recipe apps is important too, but that can be backburner for a long while.
+
+Techniques and cooking methods can be integrated and marked on the recipes. We can use tags so recipes could be marked for "Wok" or "Deep-fried" or "Fermented", as well as search by ingredients the user wants to use.
+
+Finally, I want to have a free ad-supported tier, and paid tier--a one-time purchase of 5.99 to remove ads forever.
+
+I would like your input on this and your thoughts and criticisms.
